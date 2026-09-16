@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio del Sector Musical de Bogotá</title>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIINfQ3JQ2hZ7m5XQY5Qj7YQ7Y5Qj7YQ7Y="
+          crossorigin=""/>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="brand">
+        <div>
+            <h1>Directorio del Sector Musical de Bogotá</h1>
+            <p>Consejo Distrital de Música · Herramienta de caracterización</p>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="intro">
+        <div>
+            <h2>Directorio y cartografía</h2>
+            <p>Explora los actores, agrupaciones y espacios registrados en el sector musical de Bogotá.</p>
+        </div>
+        <div class="status" id="status">Cargando datos…</div>
+    </section>
+
+    <section class="controls">
+        <label class="search-box">
+            <span>Buscar</span>
+            <input type="search" id="search"
+                   placeholder="Nombre, agrupación o descripción…"
+                   autocomplete="off">
+        </label>
+
+        <label>
+            <span>Tipo</span>
+            <select id="typeFilter">
+                <option value="">Todos los tipos</option>
+            </select>
+        </label>
+
+        <label>
+            <span>Localidad</span>
+            <select id="localidadFilter">
+                <option value="">Todas las localidades</option>
+            </select>
+        </label>
+
+        <button id="clearFilters" class="secondary" type="button">Limpiar</button>
+    </section>
+
+    <section class="content">
+        <aside class="directory">
+            <div class="directory-header">
+                <div>
+                    <h2>Registros</h2>
+                    <span id="counter">0 registros</span>
+                </div>
+            </div>
+            <div id="directoryList"></div>
+        </aside>
+
+        <section class="map-container">
+            <div id="map" aria-label="Mapa del sector musical de Bogotá"></div>
+        </section>
+    </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

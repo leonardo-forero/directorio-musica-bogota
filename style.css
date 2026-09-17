@@ -221,6 +221,23 @@ body {
     line-height: 1.4;
 }
 
+.contact,
+.popup-contact {
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.contact a,
+.popup-contact a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.contact a:hover,
+.popup-contact a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
     .controls {
         grid-template-columns: 1fr 1fr;

@@ -165,12 +165,13 @@ function renderDirectory(items) {
         card.className = "person-card";
 
         card.innerHTML = `
-            <h3>${escapeHtml(item.Nombre || "Sin nombre")}</h3>
-            ${item.Tipo ? `<div class="type">${escapeHtml(item.Tipo)}</div>` : ""}
-            ${item.Agrupacion ? `<div class="group">${escapeHtml(item.Agrupacion)}</div>` : ""}
-            ${item.Localidad ? `<div class="localidad">📍 ${escapeHtml(item.Localidad)}</div>` : ""}
-            ${item.Descripcion ? `<p>${escapeHtml(item.Descripcion)}</p>` : ""}
-        `;
+           <h3>${escapeHtml(item.Nombre || "Sin nombre")}</h3>
+           ${item.Tipo ? `<div class="type">${escapeHtml(item.Tipo)}</div>` : ""}
+           ${item.Agrupacion ? `<div class="group">${escapeHtml(item.Agrupacion)}</div>` : ""}
+           ${item.Localidad ? `<div class="localidad">📍 ${escapeHtml(item.Localidad)}</div>` : ""}
+           ${item.Correo ? `<div class="contact">✉️ <a href="mailto:${escapeHtml(item.Correo)}" onclick="event.stopPropagation()">${escapeHtml(item.Correo)}</a></div>` : ""}
+           ${item.Descripcion ? `<p>${escapeHtml(item.Descripcion)}</p>` : ""}
+       `;
 
         card.addEventListener("click", () => focusOnMap(item));
         container.appendChild(card);
@@ -193,12 +194,13 @@ function renderMap(items) {
         const marker = L.marker([lat, lng]).addTo(map);
 
         const popup = `
-            <div class="popup-title">${escapeHtml(item.Nombre || "Sin nombre")}</div>
-            ${item.Tipo ? `<div class="popup-type">${escapeHtml(item.Tipo)}</div>` : ""}
-            ${item.Agrupacion ? `<div><strong>${escapeHtml(item.Agrupacion)}</strong></div>` : ""}
-            ${item.Localidad ? `<div>📍 ${escapeHtml(item.Localidad)}</div>` : ""}
-            ${item.Descripcion ? `<div class="popup-description">${escapeHtml(item.Descripcion)}</div>` : ""}
-        `;
+           <div class="popup-title">${escapeHtml(item.Nombre || "Sin nombre")}</div>
+           ${item.Tipo ? `<div class="popup-type">${escapeHtml(item.Tipo)}</div>` : ""}
+           ${item.Agrupacion ? `<div><strong>${escapeHtml(item.Agrupacion)}</strong></div>` : ""}
+           ${item.Localidad ? `<div>📍 ${escapeHtml(item.Localidad)}</div>` : ""}
+           ${item.Correo ? `<div class="popup-contact">✉️ <a href="mailto:${escapeHtml(item.Correo)}">${escapeHtml(item.Correo)}</a></div>` : ""}
+           ${item.Descripcion ? `<div class="popup-description">${escapeHtml(item.Descripcion)}</div>` : ""}
+       `;
 
         marker.bindPopup(popup);
         marker.itemData = item;

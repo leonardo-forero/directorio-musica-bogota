@@ -193,15 +193,28 @@ function renderMap(items) {
 
         const marker = L.marker([lat, lng]).addTo(map);
 
+        const imagePath = item.ID
+            ? `images/${encodeURIComponent(item.ID)}.jpg`
+            : "";
+
         const popup = `
+            ${imagePath ? `
+               <img
+                   src="${imagePath}"
+                   alt="${escapeHtml(item.Nombre || "Imagen del registro")}"
+                   class="popup-image"
+                   onerror="this.style.display='none';"
+               >
+           ` : ""}
+
            <div class="popup-title">${escapeHtml(item.Nombre || "Sin nombre")}</div>
            ${item.Tipo ? `<div class="popup-type">${escapeHtml(item.Tipo)}</div>` : ""}
            ${item.Agrupacion ? `<div><strong>${escapeHtml(item.Agrupacion)}</strong></div>` : ""}
            ${item.Localidad ? `<div>📍 ${escapeHtml(item.Localidad)}</div>` : ""}
            ${item.Correo ? `<div class="popup-contact">✉️ <a href="mailto:${escapeHtml(item.Correo)}">${escapeHtml(item.Correo)}</a></div>` : ""}
            ${item.Descripcion ? `<div class="popup-description">${escapeHtml(item.Descripcion)}</div>` : ""}
-       `;
-
+         `;
+        
         marker.bindPopup(popup);
         marker.itemData = item;
 

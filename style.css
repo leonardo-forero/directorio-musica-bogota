@@ -285,3 +285,13 @@ body {
         flex-direction: column;
     }
 }
+
+/* Imagen de los registros en el popup del mapa */
+.popup-image {
+    display: block;
+    width: calc(100% + 20px);
+    height: 170px;
+    object-fit: cover;
+    margin: -10px -10px 10px -10px;
+    border-radius: 8px 8px 0 0;
+}
